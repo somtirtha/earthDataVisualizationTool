@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>earthDataVisualizationTool</groupId>
+	<artifactId>earthDataVisualizationTool</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<repositories>
+		<repository>
+			<id>arcgis</id>
+			<url>https://esri.bintray.com/arcgis</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>arcgis-plugin</id>
+			<url>https://esri.bintray.com/arcgis</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+
+		<resources>
+			<resource>
+				<directory>src</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.zen.java</groupId>
+				<artifactId>javafx-maven-plugin</artifactId>
+				<version>8.7.0</version>
+				<configuration>
+					<mainClass>com.somtirtha.datavisualization.Main</mainClass>
+				</configuration>
+			</plugin>
+
+			<!--ArcGIS Java Maven Plugin -->
+			<plugin>
+				<groupId>com.esri.arcgisruntime</groupId>
+				<artifactId>arcgis-java-maven-plugin</artifactId>
+				<version>1.0</version>
+				<configuration>
+					<version>100.1.0</version>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.lynden</groupId>
+			<artifactId>gmapsfx</artifactId>
+			<version>2.12.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.esri.arcgisruntime</groupId>
+			<artifactId>arcgis-java</artifactId>
+			<version>100.1.0</version>
+		</dependency>
+
+	</dependencies>
+</project>
