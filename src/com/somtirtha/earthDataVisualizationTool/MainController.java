@@ -42,13 +42,14 @@ public class MainController {
 	public void setMapElement() {
 		// create an ArcGISMap with the a Basemap instance with an Imagery base layer
 		ArcGISMap map = new ArcGISMap(Basemap.createImagery());
+		
 		// set the map to be displayed in this view
 		mapView = new MapView();
 		mapView.setMap(map);
 
 		// add the map view to mapContainer
 		mapContainer = new StackPane();
-		anchorPane.getChildren().addAll(mapView);
+		mapContainer.getChildren().addAll(mapView);
 
 	}
 

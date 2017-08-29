@@ -17,14 +17,16 @@ import com.esri.arcgisruntime.mapping.view.MapView;
 public class Main extends Application {
 	private Stage primaryStage;
 	private MapView mapView;
-	private AnchorPane rootLayout;
+	// private AnchorPane rootLayout;
 
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Data Viz");
+
 		// initialize root layout
-		initRootLayout();
+		// initRootLayoutWithFXML();
+		initRootLayoutWithoutFXML();
 
 	}
 
@@ -37,27 +39,25 @@ public class Main extends Application {
 		return primaryStage;
 	}
 
-//	public StackPane getMapContainer() {
-//		return mapContainer;
-//	}
-
 	/**
 	 * intitialize the root layout
 	 * 
 	 * @param args
 	 */
-	public void initRootLayout() {
+	public void initRootLayoutWithFXML() {
 		try {
+
+			MainController controller = new MainController();
+
 			// Load root layout from fxml file.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("Layout.fxml"));
-            rootLayout = (AnchorPane) loader.load();
-			
-			
-////			Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
-//			Parent root = FXMLLoader.load(getClass().getResource("Layout.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("Layout.fxml"));
+			// loader.setController(controller);
+			AnchorPane rootLayout = loader.load();
+
+			//// Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+			// Parent root = FXMLLoader.load(getClass().getResource("Layout.fxml"));
 			Scene scene = new Scene(rootLayout);
-//			scene.getStylesheets().add(getClass().getResource("/resources/application.css").toExternalForm());
+			// scene.getStylesheets().add(getClass().getResource("/resources/application.css").toExternalForm());
 
 			// set title, size, and add scene to stage
 			primaryStage.setMaximized(true);
@@ -65,21 +65,47 @@ public class Main extends Application {
 			primaryStage.show();
 
 			// create an ArcGISMap with the a Basemap instance with an Imagery base layer
-//			ArcGISMap map = new ArcGISMap(Basemap.createImagery());
-//			// set the map to be displayed in this view
-//			mapView = new MapView();
-//			mapView.setMap(map);
+			ArcGISMap map = new ArcGISMap(Basemap.createImagery());
 
-			// add the map view to mapContainer
-//			root.getC
-//			StackPane mapContainer = new StackPane();
-			
-//			mapContainer.getChildren().addAll(mapView);
-			
-//			FXMLLoader loader = new FXMLLoader(getClass().getResource("Layout.fxml"));
-			rootLayout.getChildren().add(loader.load());
-			MainController mc = loader.getController();
-			mc.setMapElement();
+			// set the map to be displayed in this view
+			mapView = new MapView();
+			mapView.setMap(map);
+
+			rootLayout.getChildren().addAll(mapView);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * intitialize the root layout
+	 * 
+	 * @param args
+	 */
+	public void initRootLayoutWithoutFXML() {
+		try {
+
+			// create stack pane and application scene
+			StackPane stackPane = new StackPane();
+			Scene scene = new Scene(stackPane);
+
+			// set title, size, and add scene to stage
+			primaryStage.setTitle("Data Vis");
+			primaryStage.setMaximized(true);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+			// create a ArcGISMap with the a Basemap instance with an Imagery base layer
+			ArcGISMap map = new ArcGISMap(Basemap.createImagery());
+
+			// set the map to be displayed in this view
+			mapView = new MapView();
+			mapView.setMap(map);
+
+			// add the map view to stack pane
+			stackPane.getChildren().addAll(mapView);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -106,8 +132,8 @@ public class Main extends Application {
 	@Override
 	public void stop() throws Exception {
 
-		 if (mapView != null) {
-		 mapView.dispose();
-		 }
+		if (mapView != null) {
+			mapView.dispose();
+		}
 	}
 }
