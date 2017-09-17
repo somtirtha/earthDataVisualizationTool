@@ -25,8 +25,8 @@ public class Main extends Application {
 		this.primaryStage.setTitle("Data Viz");
 
 		// initialize root layout
-		// initRootLayoutWithFXML();
-		initRootLayoutWithoutFXML();
+		initRootLayoutWithFXML();
+		// initRootLayoutWithoutFXML();
 
 	}
 
@@ -50,28 +50,20 @@ public class Main extends Application {
 			MainController controller = new MainController();
 
 			// Load root layout from fxml file.
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("Layout.fxml"));
-			// loader.setController(controller);
-			AnchorPane rootLayout = loader.load();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("Main.fxml"));
 
-			//// Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
-			// Parent root = FXMLLoader.load(getClass().getResource("Layout.fxml"));
+			// load the root layout from the loader object
+			StackPane rootLayout = loader.load();
+
+			// create a scene from the root layout
 			Scene scene = new Scene(rootLayout);
-			// scene.getStylesheets().add(getClass().getResource("/resources/application.css").toExternalForm());
 
 			// set title, size, and add scene to stage
 			primaryStage.setMaximized(true);
+
+			// set the scene in the primary stage
 			primaryStage.setScene(scene);
 			primaryStage.show();
-
-			// create an ArcGISMap with the a Basemap instance with an Imagery base layer
-			ArcGISMap map = new ArcGISMap(Basemap.createImagery());
-
-			// set the map to be displayed in this view
-			mapView = new MapView();
-			mapView.setMap(map);
-
-			rootLayout.getChildren().addAll(mapView);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -80,7 +72,7 @@ public class Main extends Application {
 	}
 
 	/**
-	 * intitialize the root layout
+	 * intitialize the root layout without FXML
 	 * 
 	 * @param args
 	 */
@@ -92,7 +84,6 @@ public class Main extends Application {
 			Scene scene = new Scene(stackPane);
 
 			// set title, size, and add scene to stage
-			primaryStage.setTitle("Data Vis");
 			primaryStage.setMaximized(true);
 			primaryStage.setScene(scene);
 			primaryStage.show();
