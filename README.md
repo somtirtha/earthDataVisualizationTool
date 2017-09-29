@@ -15,4 +15,4 @@ Run the project by gong to Run As> Run as Java application or by clicking on the
 
 
 
-![App snapshot!](https://github.com/somtirtha/earthDataVisualizationTool/tree/develop/src/resources/images/dataVisAppPic2.png)
+![App snapshot!](src/resources/images/dataVisAppPic2.png)

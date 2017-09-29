@@ -25,6 +25,7 @@ import javafx.stage.FileChooser;
 
 public class MainController implements Initializable {
 	private MapView mapView;
+	private ArcGISMap map;
 
 	// all FXML container ID's
 	@FXML
@@ -68,7 +69,7 @@ public class MainController implements Initializable {
 	// initialize map element
 	public void setMapElement() {
 		// create an ArcGISMap with the a Basemap instance with an Imagery base layer
-		ArcGISMap map = new ArcGISMap(Basemap.createImagery());
+		map = new ArcGISMap(Basemap.createImagery());
 
 		// set the map to be displayed in this view
 		mapView = new MapView();

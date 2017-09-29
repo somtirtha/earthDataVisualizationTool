@@ -29,6 +29,8 @@ public class Main extends Application {
 		 initRootLayoutWithFXML();
 		// initRootLayoutWithoutFXML();
 
+		 // close the primary stage
+		 primaryStage.show();
 	}
 
 	/**
