@@ -78,5 +78,27 @@
 			<version>2.6.1</version>
 		</dependency>
 
+		<!-- HDF dependencies from local build -->
+		<dependency>
+			<groupId>com.hdf.java</groupId>
+			<artifactId>HDFJava</artifactId>
+			<version>3.3.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.hdf5.java</groupId>
+			<artifactId>HDF5Java</artifactId>
+			<version>3.3.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.bbn/openmap -->
+		<!--  WORKING ON THIS -->
+		<!-- <dependency>
+			<groupId>com.bbn</groupId>
+			<artifactId>openmap</artifactId>
+			<version>5.1.13</version>
+		</dependency> -->
+
+
 	</dependencies>
 </project>

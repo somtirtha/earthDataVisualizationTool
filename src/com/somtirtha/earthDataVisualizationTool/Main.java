@@ -24,8 +24,9 @@ public class Main extends Application {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Data Viz");
 
+
 		// initialize root layout
-		initRootLayoutWithFXML();
+		 initRootLayoutWithFXML();
 		// initRootLayoutWithoutFXML();
 
 	}
