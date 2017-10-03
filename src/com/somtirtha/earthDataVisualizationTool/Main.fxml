@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <StackPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.somtirtha.earthDataVisualizationTool.MainController">
    <children>
       <VBox prefHeight="550.0" prefWidth="680.0">
@@ -18,7 +17,7 @@
                <children>
                   <MenuButton mnemonicParsing="false" text="File">
                     <items>
-                      <MenuItem fx:id="menuItem" mnemonicParsing="false" onAction="#ButtonAction" text="Open File" />
+                      <MenuItem fx:id="menuItem" mnemonicParsing="false" onAction="#openFileAction" text="Open File" />
                       <MenuItem mnemonicParsing="false" text="Save File" />
                         <MenuItem mnemonicParsing="false" text="Quit" />
                     </items>
@@ -36,7 +35,7 @@
             </HBox>
             <SplitPane dividerPositions="0.2935103244837758" prefHeight="148.0" prefWidth="680.0" VBox.vgrow="ALWAYS">
                <items>
-                  <ListView fx:id="listView" />
+                  <ListView fx:id="listView" onMouseClicked="#clickOnLayer" />
                   <StackPane fx:id="mapContainer" prefHeight="150.0" prefWidth="200.0" />
                </items>
             </SplitPane>

@@ -6,9 +6,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.esri.arcgisruntime.layers.RasterLayer;
 import com.esri.arcgisruntime.mapping.ArcGISMap;
 import com.esri.arcgisruntime.mapping.Basemap;
 import com.esri.arcgisruntime.mapping.view.MapView;
+import com.esri.arcgisruntime.raster.MosaicDatasetRaster;
+import com.esri.arcgisruntime.raster.Raster;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -60,7 +63,7 @@ public class MainController implements Initializable {
 			listView.getItems().add(val);
 
 		}
-		
+
 		// initialize world map in the mapContainer
 		this.setMapElement();
 
@@ -81,16 +84,49 @@ public class MainController implements Initializable {
 	}
 
 	// Open Filechooser to open dialog box to choose files
-	public void ButtonAction(ActionEvent event) {
+	public void openFileAction(ActionEvent event) {
 		FileChooser fc = new FileChooser();
 		File selectedFile = fc.showOpenDialog(null);
 
-		if (selectedFile != null) {
-			listView.getItems().add(selectedFile.getName());
+		if (selectedFile != null && selectedFile.isFile()) {
+//			listView.getItems().add(selectedFile.getName());
+
+			// TODO: read the hdf file, convert to raster format and display on map
+			HDFFileHandler hdffh = new HDFFileHandler();
+			hdffh.readFile(selectedFile.getPath());
 		} else {
+			// error dialog box
 			System.out.println("File not valid!");
 		}
 
+	}
+
+	// click layer
+	public void clickOnLayer(ActionEvent event) {
+		System.out.println("Clicked");
+
+	}
+
+	public void readHDFFiles() {
+
+	}
+
+	public void displayDataOnMap() {
+		// create a raster from a raster file
+		String rasterFilePath = "../resources/sample.tif";
+		Raster raster = new Raster(rasterFilePath);
+
+		RasterLayer rasterLayer = new RasterLayer(raster);
+
+		// add as a basemap
+		// map = new ArcGISMap(new Basemap(rasterLayer));
+
+		// Alternatively you can create a raster layer from a mosaic dataset
+		MosaicDatasetRaster mosaicDatasetRaster = new MosaicDatasetRaster("/path/to/mosaic.sqlite", "rasterName");
+		RasterLayer mosaicDatasetRasterLayer = new RasterLayer(mosaicDatasetRaster);
+
+		// add as an operational layer
+		map.getOperationalLayers().add(mosaicDatasetRasterLayer);
 	}
 
 }

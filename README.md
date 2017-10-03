@@ -3,6 +3,8 @@ A visualization tool to project data from Earthdata on a map
 
 Instructions:
 
+Pre-requisites: Install ArcGIS SDK from 
+
 Git clone the project using: git clone https://github.com/somtirtha/earthDataVisualizationTool.git
 
 
