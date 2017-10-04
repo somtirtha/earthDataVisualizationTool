@@ -23,7 +23,7 @@ Go to Run As> Maven Install and let Maven do the job of installing all the depen
 
 3. Once installed go to Maven> Update project
 
-4. Add the following to the run configurations in Eclipse: -Djava.library.path=<PATH TO HDF JAVA LIBRARIES>/CMake-hdfjava-3.3.2/HDF_Group/HDFJAVA/3.3.2/lib
+4. Add the following to the run configurations in Eclipse: -Djava.library.path=(PATH TO HDF JAVA LIBRARIES)/CMake-hdfjava-3.3.2/HDF_Group/HDFJAVA/3.3.2/lib
 
 5. Run the project by gong to Run As> Run as Java application or by clicking on the run button in the toolbar.
 
