@@ -8,7 +8,7 @@ Pre-requisites:
 1. Get the HDF Java installation and also the ArcGIS installation file from this link:
 https://drive.google.com/open?id=0BzOo3S_zMQSDOWlERHR2U1pJZjA
 
-2. Put your HDF Java Libraries in a location of preference.
+2. Untar CMake-hdfjava-3.3.2.tar and put your HDF Java Libraries in a location of preference.
 
 3. Install ArcGIS SDK provided. If you need instructions you can follow this guide: https://developers.arcgis.com/java/10-2/guide/install-the-sdk.htm
 
