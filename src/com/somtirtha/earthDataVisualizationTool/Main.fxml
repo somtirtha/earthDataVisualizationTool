@@ -10,36 +10,37 @@
 <?import javafx.scene.layout.VBox?>
 
 <StackPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.somtirtha.earthDataVisualizationTool.MainController">
-   <children>
-      <VBox prefHeight="550.0" prefWidth="680.0">
-         <children>
-            <HBox alignment="CENTER_LEFT" spacing="5.0">
-               <children>
-                  <MenuButton mnemonicParsing="false" text="File">
-                    <items>
-                      <MenuItem fx:id="menuItem" mnemonicParsing="false" onAction="#openFileAction" text="Open File" />
-                      <MenuItem mnemonicParsing="false" text="Save File" />
-                        <MenuItem mnemonicParsing="false" text="Quit" />
-                    </items>
-                  </MenuButton>
-                  <MenuButton mnemonicParsing="false" text="Controls">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                      <MenuItem mnemonicParsing="false" text="Action 2" />
-                    </items>
-                  </MenuButton>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
-            </HBox>
-            <SplitPane dividerPositions="0.2935103244837758" prefHeight="148.0" prefWidth="680.0" VBox.vgrow="ALWAYS">
-               <items>
-                  <ListView fx:id="listView" onMouseClicked="#clickOnLayer" />
-                  <StackPane fx:id="mapContainer" prefHeight="150.0" prefWidth="200.0" />
-               </items>
-            </SplitPane>
-         </children>
-      </VBox>
-   </children>
+	<children>
+		<VBox prefHeight="550.0" prefWidth="680.0">
+			<children>
+				<HBox alignment="CENTER_LEFT" spacing="5.0">
+					<children>
+						<MenuButton mnemonicParsing="false" text="File">
+							<items>
+								<MenuItem fx:id="menuItem" mnemonicParsing="false" onAction="#openFileAction" text="Open File" />
+								<MenuItem mnemonicParsing="false" onAction="#displayDataOnMap" text="Save File" />
+								<MenuItem mnemonicParsing="false" text="Quit" />
+							</items>
+						</MenuButton>
+						<MenuButton mnemonicParsing="false" text="Controls">
+							<items>
+								<MenuItem fx:id="displayRaster" mnemonicParsing="false" onAction="#displayDataOnMap" text="Display Raster" />
+								<MenuItem mnemonicParsing="false" text="Action 2" />
+								<MenuItem mnemonicParsing="false" text="Action3" />
+							</items>
+						</MenuButton>
+					</children>
+					<VBox.margin>
+						<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+					</VBox.margin>
+				</HBox>
+				<SplitPane dividerPositions="0.2935103244837758" prefHeight="148.0" prefWidth="680.0" VBox.vgrow="ALWAYS">
+					<items>
+						<ListView fx:id="listView" onMouseClicked="#clickOnLayer" prefHeight="511.0" prefWidth="50.0" />
+						<StackPane fx:id="mapContainer" prefHeight="511.0" prefWidth="952.0" />
+					</items>
+				</SplitPane>
+			</children>
+		</VBox>
+	</children>
 </StackPane>

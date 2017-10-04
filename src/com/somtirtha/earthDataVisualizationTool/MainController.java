@@ -33,6 +33,9 @@ public class MainController implements Initializable {
 	// all FXML container ID's
 	@FXML
 	private Button fileButton;
+	
+	@FXML
+	private MenuItem displayRaster;
 
 	@FXML
 	private MenuItem menuItem;
@@ -111,9 +114,10 @@ public class MainController implements Initializable {
 
 	}
 
-	public void displayDataOnMap() {
+	public void displayDataOnMap(ActionEvent event) {
+		System.out.println("I am here");
 		// create a raster from a raster file
-		String rasterFilePath = "../resources/sample.tif";
+		String rasterFilePath = "/Users/somtirtha/Documents/workspace_eclipse/workspace_java/java_apps/earthDataVisualizationTool/src/resources/large_files/CPC_GLB_DLY_PREC_20120401_float.tif";
 		Raster raster = new Raster(rasterFilePath);
 
 		RasterLayer rasterLayer = new RasterLayer(raster);
@@ -122,11 +126,11 @@ public class MainController implements Initializable {
 		// map = new ArcGISMap(new Basemap(rasterLayer));
 
 		// Alternatively you can create a raster layer from a mosaic dataset
-		MosaicDatasetRaster mosaicDatasetRaster = new MosaicDatasetRaster("/path/to/mosaic.sqlite", "rasterName");
-		RasterLayer mosaicDatasetRasterLayer = new RasterLayer(mosaicDatasetRaster);
+//		MosaicDatasetRaster mosaicDatasetRaster = new MosaicDatasetRaster("/path/to/mosaic.sqlite", "rasterName");
+//		RasterLayer mosaicDatasetRasterLayer = new RasterLayer(mosaicDatasetRaster);
 
 		// add as an operational layer
-		map.getOperationalLayers().add(mosaicDatasetRasterLayer);
+		map.getOperationalLayers().add(rasterLayer);
 	}
 
 }
